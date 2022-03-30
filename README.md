@@ -13,12 +13,15 @@ import: https://raw.githubusercontent.com/liaTemplates/AVR8js/main/README.md
 
 -->
 
-# CrossLabs Meeting
+# TUBAF - Status der Implementierung
 
+https://github.com/LiaPlayground/Edrys_and_LiaScript/
 
 ## Edrys
 
 ![edrys-logo](https://raw.githubusercontent.com/edrys-org/edrys/main/brand/logo.png)<!-- style="width:100%" -->
+
+__The Open Remote Teaching Platform__
 
 __Projekt: https://edrys.org __
 
@@ -40,16 +43,16 @@ __GitHub: https://github.com/edrys-org/edrys __
 
 ### Wie Funktioniert es
 
-    {{0-1}}
+    {{1-2}}
 __Rollen:__ Student/Teacher/Station
 
-    {{0-1}}
+    {{1-2}}
 ![stations](https://raw.githubusercontent.com/edrys-org/edrys/main/docs/stations/structure.png)
 
-    {{1}}
+    {{2}}
 ![arduino-stations](https://raw.githubusercontent.com/edrys-org/edrys/main/docs/stations/arduino-lab.png)
 
-    {{1}}
+    {{2}}
 __Orte:__ Lobby/Room/Station
 
 #### Kommunikation
@@ -102,13 +105,16 @@ __Promiskuität__
 
 ``` js
 // To receive messages:
-Edrys.onMessage(({ from, subject, body }) => {
-  console.log("Got new message: ", from, subject, body)
-});
+Edrys.onMessage(
+  ({ from, subject, body, module }) => {
+    console.log("Got new message: ", from, subject, body, module)
+  }, promiscuous=true);
 ```
 ***********************************************************
 
-## Klassenraum
+## Live demo
+
+### Klassenraum
 
 __LiaScript Module:__ https://github.com/edrys-org/module-liascript
 
@@ -116,11 +122,11 @@ __Konfiguration:__
 
 ```json
 {
-  "course": "https://github.com/LiaPlayground/Edrys_and_LiaScript/blob/main/README.md"
+  "course": "https://raw.githubusercontent.com/LiaPlayground/Edrys_and_LiaScript/main/README.md"
 }
 ```
 
-### Synchronisierung
+#### Synchronisierung
 
 __Quiz:__ Was ist Edrys?
 
@@ -132,11 +138,11 @@ __Quiz:__ Was ist Edrys?
 
 __Umfrage:__ Wie fanden Sie die Vorstellung bis jetzt?
 
-[(1)] sehr gut
-[(2)] gut
-[(3)] befriedigend
-[(4)] ausreichend
-[(5)] noch nicht ganz ausreichend
+[(Note 1)] sehr gut
+[(Note 2)] gut
+[(Note 3)] befriedigend
+[(Note 4)] ausreichend
+[(Note 5)] noch nicht ganz ausreichend
 
 ---
 
@@ -144,7 +150,7 @@ __Umfrage:__ Was wünschen Sie sich (Begriffe können mit Komma getrennt werden)
 
 [[___]]
 
-### Lokales testent
+#### Lokales testen
 
 <div id="example">
 <wokwi-led color="red"   pin="13" label="13"></wokwi-led>
@@ -175,17 +181,17 @@ void loop() {
 ```
 @AVR8js.sketch(example)
 
-## Live demo
 
 
+#### Live Coding
 
-### Konfiguration
+https://github.com/edrys-org/module-code
 
 ``` bash
 arduino-cli sketch new ./arduino
-rm ./ardunio/*
+rm ./arduino/*
 echo "Writing Code-----------------------------------"
-echo $CODE | base64 --decode > ./ardunio/arduino.ino
+echo $CODE | base64 --decode > ./arduino/arduino.ino
 echo "Compiling Code---------------------------------"
 arduino-cli compile ./arduino -b arduino:avr:uno -v --output-dir ./arduino
 echo "Uploading Code---------------------------------"
@@ -208,6 +214,21 @@ void loop() {
 }
 ```
 
+---
+
+__Konfiguration__
+
+```json
+{
+  "editorText": "// the setup function runs once when you press reset or power the board\nvoid setup() {\n  // initialize digital pin LED_BUILTIN as an output.\n  pinMode(LED_BUILTIN, OUTPUT);\n}\n\n// the loop function runs over and over again forever\nvoid loop() {\n  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)\n  delay(1000);                       // wait for a second\n  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW\n  delay(1000);                       // wait for a second\n}",
+  "terminalText": "Starting text in terminal...",
+  "commands": "arduino-cli sketch new ./arduino\nrm ./arduino/*
+  echo \"Writing Code-----------------------------------\"\necho $CODE | base64 --decode > ./arduino/arduino.ino\necho \"Compiling Code---------------------------------\"\narduino-cli compile ./arduino -b arduino:avr:uno -v --output-dir ./arduino\necho \"Uploading Code---------------------------------\"\narduino-cli upload ./arduino -b arduino:avr:uno -p /dev/ttyACM0\n",
+  "language": "cpp",
+  "theme": "light"
+}
+```
+
 
 ### Global
 
@@ -215,3 +236,11 @@ __Heroku:__ https://thawing-peak-50396.herokuapp.com/
 
 
 ## Ausblick
+
+
+* {{1}} Headless Browser via [puppeteer](https://puppeteer.github.io/puppeteer/)
+
+* {{2}} WebViz & ROS:
+
+  {{2}}
+  !?[WebView Ros](https://open-source-webviz-ui.s3-us-west-2.amazonaws.com/landing/rawvelodyne.webm)<!-- autoplay -->
