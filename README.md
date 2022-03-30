@@ -240,7 +240,7 @@ __Heroku:__ https://thawing-peak-50396.herokuapp.com/
 
 * {{1}} Headless Browser via [puppeteer](https://puppeteer.github.io/puppeteer/)
 
-* {{2}} WebViz & ROS:
+* {{2}} WebViz & ROS: https://webviz.io
 
   {{2}}
   !?[WebView Ros](https://open-source-webviz-ui.s3-us-west-2.amazonaws.com/landing/rawvelodyne.webm)<!-- autoplay -->
